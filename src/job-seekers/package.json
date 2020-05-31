@@ -10,13 +10,23 @@
     "gatsby-plugin-manifest": "^2.4.5",
     "gatsby-plugin-offline": "^3.2.3",
     "gatsby-plugin-react-helmet": "^3.3.1",
-    "gatsby-plugin-sharp": "^2.6.4",
+    "gatsby-plugin-sharp": "^2.6.9",
+    "gatsby-plugin-theme-ui": "^0.3.0",
+    "gatsby-remark-copy-linked-files": "^2.3.3",
+    "gatsby-remark-images": "^3.3.8",
+    "gatsby-remark-responsive-iframe": "^2.4.3",
+    "gatsby-remark-smartypants": "^2.3.2",
     "gatsby-source-filesystem": "^2.3.4",
+    "gatsby-transformer-remark": "^2.8.13",
     "gatsby-transformer-sharp": "^2.5.2",
+    "install": "^0.13.0",
+    "npm": "^6.14.5",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.0.0"
+    "react-helmet": "^6.0.0",
+    "theme-ui": "^0.3.1",
+    "typeface-work-sans": "0.0.72"
   },
   "devDependencies": {
     "prettier": "2.0.5"
