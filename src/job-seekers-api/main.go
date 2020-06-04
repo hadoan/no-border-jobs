@@ -28,8 +28,13 @@ type Job struct {
 
 var client *mongo.Client
 
+func enableCors(w *http.ResponseWriter) {
+	(*w).Header().Set("Access-Control-Allow-Origin", "*")
+}
+
 func getJobPostsEndpoint(response http.ResponseWriter, request *http.Request) {
 	response.Header().Add("content-type", "application/json")
+	enableCors(&response)
 	var jobs []Job
 	collection := client.Database("Default").Collection("AppJobs")
 	ctx, _ := context.WithTimeout(context.Background(), 30*time.Second)
