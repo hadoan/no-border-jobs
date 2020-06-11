@@ -1,11 +1,49 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import RecentJobs from './recent-jobs'
+// import { graphql, useStaticQuery } from "gatsby"
 
 const FeaturedJobs = () => {
+
+    // ----------------------
+    // RUNTIME DATA FETCHING
+    // ----------------------
+    const [jobsHtml, setJobsHtml] = useState(0)
+    // jobs = []
+    useEffect(() => {
+        // get data from api
+        fetch(`http://localhost:12345/jobs`)
+            .then(response => response.json()) // parse JSON from request
+            .then(resultData => {
+
+                const jobsHtml = resultData.map((post, index) =>
+
+                    <li key={post.id.Data} class={index % 2 ? 'highlighted' : ''}>
+                        <a href={post.jobUrl}>
+                            <img src={post.companyLogoUrl} alt="" />
+                            <div class="job-list-content">
+                                <h4>
+                                    {post.title}
+                                </h4>
+                                <div class="job-icons">
+                                    <span><i class="fa fa-map-marker"></i> {post.city}</span>
+                                </div>
+                            </div>
+
+                        </a>
+                        <div class="clearfix"></div>
+                    </li>
+
+                );
+
+                setJobsHtml(jobsHtml);
+            })
+    }, []);
+
+
+
     return (
         <>
-
-            <div class="container">
+            {/* <div class="container">
                 <div class="sixteen columns">
                     <h3 class="margin-bottom-25">Popular Categories</h3>
                     <ul id="popular-categories">
@@ -25,7 +63,7 @@ const FeaturedJobs = () => {
                     <a href="browse-categories.html" class="button centered">Browse All Categories</a>
                     <div class="margin-bottom-50"></div>
                 </div>
-            </div>
+            </div> */}
 
 
             <div class="container">
@@ -35,22 +73,9 @@ const FeaturedJobs = () => {
                         <h3 class="margin-bottom-25">Recent Jobs</h3>
                         <ul class="job-list">
 
-                            <li class="highlighted"><a href="job-page.html">
-                                <img src="images/job-list-logo-01.png" alt="" />
-                                <div class="job-list-content">
-                                    <h4>Marketing Coordinator - SEO / SEM Experience <span class="full-time">Full-Time</span></h4>
-                                    <div class="job-icons">
-                                        <span><i class="fa fa-briefcase"></i> King</span>
-                                        <span><i class="fa fa-map-marker"></i> Sydney</span>
-                                        <span><i class="fa fa-money"></i> $100 / hour</span>
-                                    </div>
-                                </div>
+                            {jobsHtml}
 
-                            </a>
-                                <div class="clearfix"></div>
-                            </li>
-
-                            <li><a href="job-page.html">
+                            {/* <li><a href="job-page.html">
                                 <img src="images/job-list-logo-02.png" alt="" />
                                 <div class="job-list-content">
                                     <h4>Core PHP Developer for Site Maintenance <span class="part-time">Part-Time</span></h4>
@@ -62,49 +87,7 @@ const FeaturedJobs = () => {
                                 </div>
                             </a>
                                 <div class="clearfix"></div>
-                            </li>
-
-                            <li><a href="job-page.html">
-                                <img src="images/job-list-logo-03.png" alt="" />
-                                <div class="job-list-content">
-                                    <h4>Restaurant Team Member - Crew <span class="full-time">Full-Time</span></h4>
-                                    <div class="job-icons">
-                                        <span><i class="fa fa-briefcase"></i> King</span>
-                                        <span><i class="fa fa-map-marker"></i> Sydney</span>
-                                        <span><i class="fa fa-money"></i> $15 / hour</span>
-                                    </div>
-                                </div>
-                            </a>
-                                <div class="clearfix"></div>
-                            </li>
-
-                            <li><a href="job-page.html">
-                                <img src="images/job-list-logo-04.png" alt="" />
-                                <div class="job-list-content">
-                                    <h4>Power Systems User Experience Designer  <span class="internship">Internship</span></h4>
-                                    <div class="job-icons">
-                                        <span><i class="fa fa-briefcase"></i> Hexagon</span>
-                                        <span><i class="fa fa-map-marker"></i> London</span>
-                                        <span><i class="fa fa-money"></i> $75 / hour</span>
-                                    </div>
-                                </div>
-                            </a>
-                                <div class="clearfix"></div>
-                            </li>
-
-                            <li><a href="job-page.html">
-                                <img src="images/job-list-logo-05.png" alt="" />
-                                <div class="job-list-content">
-                                    <h4>iPhone / Android Music App Development <span class="temporary">Temporary</span></h4>
-                                    <div class="job-icons">
-                                        <span><i class="fa fa-briefcase"></i> Mates</span>
-                                        <span><i class="fa fa-map-marker"></i> New York</span>
-                                        <span><i class="fa fa-money"></i> $115 / hour</span>
-                                    </div>
-                                </div>
-                            </a>
-                                <div class="clearfix"></div>
-                            </li>
+                            </li> */}
                         </ul>
 
                         <a href="browse-jobs.html" class="button centered"><i class="fa fa-plus-circle"></i> Show More Jobs</a>

@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 
 	"github.com/gorilla/mux"
 
@@ -17,13 +18,13 @@ import (
 )
 
 type Job struct {
-	// ID             primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
-	Title          string `json:"Title,omitempty" bson:"Title,omitempty"`
-	CompanyName    string `json:"CompanyName" bson:"CompanyName"`
-	City           string `json:"City" bson:"City"`
-	Country        string `json:"Country" bson:"Country"`
-	CompanyLogoUrl string `json:"CompanyLogoUrl" bson:"CompanyLogoUrl"`
-	JobUrl         string `json:"Url" bson:"Url"`
+	ID             primitive.Binary `json:"id,omitempty" bson:"_id,omitempty"`
+	Title          string           `json:"title,omitempty" bson:"Title,omitempty"`
+	CompanyName    string           `json:"companyName" bson:"CompanyName"`
+	City           string           `json:"city" bson:"City"`
+	Country        string           `json:"country" bson:"Country"`
+	CompanyLogoUrl string           `json:"companyLogoUrl" bson:"CompanyLogoUrl"`
+	JobUrl         string           `json:"jobUrl" bson:"Url"`
 }
 
 var client *mongo.Client
